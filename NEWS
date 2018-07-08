@@ -1,0 +1,17 @@
+libgeo-ipfree-perl (0.2-7) unstable; urgency=low
+
+  0.2-7 contains an updated country data file which is more detailed and more
+  accurate than the previous one. There's only one caveat:
+
+  Versions before 0.2-7 returned
+    I0: 10.0.0.0 10.255.255.255
+    L0: 127.0.0.0 127.255.255.255
+    I0: 192.168.0.0 192.168.255.255
+
+  Since 0.2-7 "ZZ" is returned for these address ranges (and for 39 other
+  reserved address spaces).
+
+  If your application relies on I0 or L0 please make sure to change it to ZZ.
+
+ -- gregor herrmann <gregoa@debian.org>  Sat, 15 Nov 2008 18:48:53 +0100
+
