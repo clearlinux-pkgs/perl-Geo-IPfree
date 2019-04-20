@@ -4,11 +4,11 @@
 #
 Name     : perl-Geo-IPfree
 Version  : 1.151940
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/B/BR/BRICAS/Geo-IPfree-1.151940.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BR/BRICAS/Geo-IPfree-1.151940.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-ipfree-perl/libgeo-ipfree-perl_1.151940-1.debian.tar.xz
-Summary  : 'Look up the country of an IPv4 address'
+Summary  : Look up country of IP Address. This module make this off-line and the DB of IPs is free & small.
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
 BuildRequires : buildreq-cpan
@@ -32,6 +32,7 @@ my( $code2, $name2, $ip2 ) = $geo->LookUp( 'www.cnn.com' );
 Summary: dev components for the perl-Geo-IPfree package.
 Group: Development
 Provides: perl-Geo-IPfree-devel = %{version}-%{release}
+Requires: perl-Geo-IPfree = %{version}-%{release}
 
 %description dev
 dev components for the perl-Geo-IPfree package.
@@ -42,7 +43,7 @@ dev components for the perl-Geo-IPfree package.
 cd ..
 %setup -q -T -D -n Geo-IPfree-1.151940 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Geo-IPfree-1.151940/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Geo-IPfree-1.151940/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
