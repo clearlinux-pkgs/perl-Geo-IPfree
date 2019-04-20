@@ -78,8 +78,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.1/Geo/IPfree.pm
-/usr/lib/perl5/vendor_perl/5.28.1/Geo/ipscountry.dat
+/usr/lib/perl5/vendor_perl/5.28.2/Geo/IPfree.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Geo/ipscountry.dat
 
 %files dev
 %defattr(-,root,root,-)
