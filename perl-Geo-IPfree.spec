@@ -4,13 +4,14 @@
 #
 Name     : perl-Geo-IPfree
 Version  : 1.151940
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/B/BR/BRICAS/Geo-IPfree-1.151940.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BR/BRICAS/Geo-IPfree-1.151940.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-ipfree-perl/libgeo-ipfree-perl_1.151940-1.debian.tar.xz
-Summary  : Look up country of IP Address. This module make this off-line and the DB of IPs is free & small.
+Summary  : 'Look up the country of an IPv4 address'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
+Requires: perl-Geo-IPfree-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -38,18 +39,28 @@ Requires: perl-Geo-IPfree = %{version}-%{release}
 dev components for the perl-Geo-IPfree package.
 
 
+%package perl
+Summary: perl components for the perl-Geo-IPfree package.
+Group: Default
+Requires: perl-Geo-IPfree = %{version}-%{release}
+
+%description perl
+perl components for the perl-Geo-IPfree package.
+
+
 %prep
 %setup -q -n Geo-IPfree-1.151940
-cd ..
-%setup -q -T -D -n Geo-IPfree-1.151940 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libgeo-ipfree-perl_1.151940-1.debian.tar.xz
+cd %{_builddir}/Geo-IPfree-1.151940
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Geo-IPfree-1.151940/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Geo-IPfree-1.151940/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -59,7 +70,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -79,9 +90,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Geo/IPfree.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Geo/ipscountry.dat
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Geo::IPfree.3
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Geo/IPfree.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Geo/ipscountry.dat
