@@ -4,7 +4,7 @@
 #
 Name     : perl-Geo-IPfree
 Version  : 1.151940
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/B/BR/BRICAS/Geo-IPfree-1.151940.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/B/BR/BRICAS/Geo-IPfree-1.151940.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-ipfree-perl/libgeo-ipfree-perl_1.151940-1.debian.tar.xz
@@ -97,5 +97,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Geo/IPfree.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Geo/ipscountry.dat
+/usr/lib/perl5/vendor_perl/5.30.2/Geo/IPfree.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Geo/ipscountry.dat
