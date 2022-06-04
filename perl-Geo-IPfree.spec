@@ -4,13 +4,14 @@
 #
 Name     : perl-Geo-IPfree
 Version  : 1.160000
-Release  : 23
+Release  : 24
 URL      : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Geo-IPfree-1.160000.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Geo-IPfree-1.160000.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-ipfree-perl/libgeo-ipfree-perl_1.151940-1.debian.tar.xz
 Summary  : 'Geo::IPfree - Look up the country of an IPv4 address'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
+Requires: perl-Geo-IPfree-license = %{version}-%{release}
 Requires: perl-Geo-IPfree-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
@@ -27,6 +28,14 @@ Requires: perl-Geo-IPfree = %{version}-%{release}
 
 %description dev
 dev components for the perl-Geo-IPfree package.
+
+
+%package license
+Summary: license components for the perl-Geo-IPfree package.
+Group: Default
+
+%description license
+license components for the perl-Geo-IPfree package.
 
 
 %package perl
@@ -68,6 +77,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Geo-IPfree
+cp %{_builddir}/Geo-IPfree-1.160000/LICENSE %{buildroot}/usr/share/package-licenses/perl-Geo-IPfree/d86b9ffe2c1d685f4bf674e8905bd284f3d33703
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -85,8 +96,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %defattr(-,root,root,-)
 /usr/share/man/man3/Geo::IPfree.3
 
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Geo-IPfree/d86b9ffe2c1d685f4bf674e8905bd284f3d33703
+
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Geo/IPfree.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Geo/IPfree.pod
-/usr/lib/perl5/vendor_perl/5.34.0/Geo/ipscountry.dat
+/usr/lib/perl5/*
