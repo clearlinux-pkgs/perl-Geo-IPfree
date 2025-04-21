@@ -7,7 +7,7 @@
 #
 Name     : perl-Geo-IPfree
 Version  : 1.160000
-Release  : 31
+Release  : 32
 URL      : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Geo-IPfree-1.160000.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Geo-IPfree-1.160000.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgeo-ipfree-perl/libgeo-ipfree-perl_1.151940-1.debian.tar.xz
